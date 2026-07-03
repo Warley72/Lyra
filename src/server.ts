@@ -1,19 +1,18 @@
 import { app } from "./app.js";
-
-const PORT = 3333;
+import { env } from "./config/env.js";
 
 const start = async () => {
-    try {
-        await app.listen({
-            port: PORT,
-            host: "0.0.0.0",
-        });
+  try {
+    await app.listen({
+      port: env.PORT,
+      host: "0.0.0.0",
+    });
 
-        console.log(` Rodando no portal http://localhost:${PORT}`);
-    } catch (error) {
-        app.log.error(error);
-        process.exit(1);
-    }
+    console.log(` Servidor rodando em http://localhost:${env.PORT}`);
+  } catch (error) {
+    app.log.error(error);
+    process.exit(1);
+  }
 };
 
 start();
