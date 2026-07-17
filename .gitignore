@@ -73,3 +73,5 @@ prisma/dev.db-journal
 tmp/
 temp/
 .cache/
+
+/src/generated/prisma
