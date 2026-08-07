@@ -5,6 +5,7 @@ import { UserController } from '../controllers/userController.js';
 const userController = new UserController();
 
 export async function usersRoutes(app: FastifyInstance) {
+    
   app.post('/users', userController.create.bind(userController));
 
   app.get('/users', userController.findMany.bind(userController));
