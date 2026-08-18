@@ -4,9 +4,9 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "tsx watch src/server.ts",
+        "dev": "npm run build && npm run start",
         "build": "tsc",
-        "start": "node dist/server.js",
+        "start": "node dist/src/server.js",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier . --write"

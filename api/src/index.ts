@@ -1,6 +1,8 @@
 import { FastifyInstance } from "fastify";
 
 import { usersRoutes } from './modules/users/routes/userRoutes.js';
+import { authRoutes } from './modules/auth/routes/authRoutes.js';
+import { env } from './config/env.js';
 
 
 export async function routes(app: FastifyInstance) {
@@ -10,5 +12,6 @@ export async function routes(app: FastifyInstance) {
     });
   });
 
-  await app.register(usersRoutes);
+  await app.register(authRoutes, { prefix: env.API_PREFIX });
+  await app.register(usersRoutes, { prefix: env.API_PREFIX });
 }

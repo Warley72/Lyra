@@ -1,5 +1,7 @@
 import { Prisma, User } from '@prisma/client';
 
+import { AppError } from '../../../errors/appError.js';
+import { hashPassword } from '../../../lib/password.js';
 import { UserRepository } from '../repositories/userRepository.js';
 
 export class UserService {
@@ -12,13 +14,18 @@ export class UserService {
       throw new Error('User already exists.');
     }
 
-    const user = await this.userRepository.create(data);
+    const user = await this.userRepository.create({
+      ...data,
+      password: await hashPassword(data.password),
+    });
 
     return user;
   }
 
-  async findById(id: number): Promise<User | null> {
-    return this.userRepository.findById(id);
+  async findById(id: number): Promise<User> {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new AppError('User not found.', 404);
+    return user;
   }
 
   async findMany(): Promise<User[]> {
@@ -26,10 +33,13 @@ export class UserService {
   }
 
   async update(id: number, data: Prisma.UserUpdateInput): Promise<User> {
-    return this.userRepository.update(id, data);
+    await this.findById(id);
+    const password = typeof data.password === 'string' ? await hashPassword(data.password) : data.password;
+    return this.userRepository.update(id, { ...data, password });
   }
 
   async delete(id: number): Promise<User> {
+    await this.findById(id);
     return this.userRepository.delete(id);
   }
 }

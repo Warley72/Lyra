@@ -4,27 +4,45 @@ import { prisma } from "../../../database/prisma.js";
 
 import { UserRepository } from "../repositories/userRepository.js";
 import { UserService } from "../services/userService.js";
+import { z } from 'zod';
+import { AppError } from '../../../errors/appError.js';
+
+const createUserSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email(),
+  password: z.string().min(6).max(128),
+});
+
+const updateUserSchema = createUserSchema.partial();
+
+const idSchema = z.coerce.number().int().positive();
+
+function serializeUser(user: { id: number; name: string; email: string; createdAt: Date; updatedAt: Date }) {
+  return user;
+}
 
 const userRepository = new UserRepository(prisma);
 const userService = new UserService(userRepository);
 
 export class UserController {
     async create(request: FastifyRequest, reply: FastifyReply) {
-        const user = await userService.create(request.body as never);
+        const user = await userService.create(createUserSchema.parse(request.body));
 
-        return reply.status(201).send(user);
+        return reply.status(201).send(serializeUser(user));
     }
 
-    async findMany(_request: FastifyRequest, reply: FastifyReply) {
-        const users = await userService.findMany();
+    async findMany(request: FastifyRequest, reply: FastifyReply) {
+        const user = await userService.findById(request.userId!);
 
-        return reply.send(users);
+        return reply.send([serializeUser(user)]);
     }
 
     async findById(request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
-        const user = await userService.findById(Number(request.params.id));
+        const id = idSchema.parse(request.params.id);
+        this.ensureOwnUser(request, id);
+        const user = await userService.findById(id);
 
-        return reply.send(user);
+        return reply.send(serializeUser(user));
     }
 
     async update(
@@ -34,14 +52,24 @@ export class UserController {
         }>,
         reply: FastifyReply,
     ) {
-        const user = await userService.update(Number(request.params.id), request.body as never);
+        const id = idSchema.parse(request.params.id);
+        this.ensureOwnUser(request, id);
+        const user = await userService.update(id, updateUserSchema.parse(request.body));
 
-        return reply.send(user);
+        return reply.send(serializeUser(user));
     }
 
     async delete(request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
-        await userService.delete(Number(request.params.id));
+        const id = idSchema.parse(request.params.id);
+        this.ensureOwnUser(request, id);
+        await userService.delete(id);
 
         return reply.status(204).send();
+    }
+
+    private ensureOwnUser(request: FastifyRequest, userId: number) {
+        if (request.userId !== userId) {
+            throw new AppError('You cannot access another user.', 403);
+        }
     }
 }
