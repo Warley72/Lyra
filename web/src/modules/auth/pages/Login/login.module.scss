@@ -1,0 +1,211 @@
+@use "@/app/styles/variables" as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    background-color: $background;
+    text-align: center;
+}
+
+.ContainerTitle {
+    margin-bottom: 50px;
+
+    .title {
+        margin: 0;
+        font-size: 6rem;
+        color: $text-primary;
+    }
+
+    p {
+        font-size: 1.4rem;
+        font-weight: 400;
+
+        color: $text-secondary;
+    }
+}
+
+.ContainerForm {
+    width: 100%;
+    max-width: 415px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: left;
+
+        label {
+            font-size: 1.1rem;
+            color: $text-primary;
+        }
+    }
+
+    .passwordHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            color: $text-primary;
+
+            font-size: 1rem;
+
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .inputContainer {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        height: 64px;
+
+        border: 1px solid $border;
+        border-radius: 7px;
+
+        padding: 0 16px;
+
+        background-color: $background;
+
+        &:focus-within {
+            border-color: $border-focus;
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+
+            margin-right: 14px;
+
+            color: $text-secondary;
+
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+
+            border: none;
+            outline: none;
+
+            color: $text-primary;
+            background: transparent;
+
+            font-family: inherit;
+            font-size: 1rem;
+
+            &::placeholder {
+                color: $text-secondary;
+            }
+        }
+
+        .showPassword {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 30px;
+            height: 30px;
+
+            padding: 0;
+
+            border: none;
+
+            color: $text-secondary;
+            background: transparent;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            &:hover {
+                color: $text-primary;
+            }
+        }
+    }
+
+    .error {
+        margin: -15px 0 0;
+
+        color: #ff6b6b;
+
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .submit {
+        width: 100%;
+        height: 65px;
+
+        margin-top: 0;
+
+        border: 1px solid $button-background;
+        border-radius: 7px;
+
+        color: $button-text;
+        background-color: $button-background;
+
+        font-family: inherit;
+        font-size: 1.2rem;
+
+        cursor: pointer;
+
+        transition: 0.2s ease;
+
+        &:hover {
+            color: $button-background;
+            background-color: $background;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+    }
+
+    .register {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 7px;
+
+        margin-top: 30px;
+
+        color: $text-secondary;
+
+        font-size: 1rem;
+
+        a {
+            color: $text-primary;
+
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

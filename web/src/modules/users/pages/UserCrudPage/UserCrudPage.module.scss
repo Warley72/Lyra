@@ -24,10 +24,10 @@
 .userSummary { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px; }
 .userSummary h2 { margin: 8px 0 5px; font-size: 1.8rem; }
 .userSummary p:last-child { margin: 0; color: #aaa6b9; }
-.secondaryButton { background: transparent; border: 1px solid #484354; color: #ddd9e8; }
-.secondaryButton:hover:not(:disabled) { background: #292536; }
+.secondaryButton { background: transparent !important; border: 1px solid #484354 !important; color: #ddd9e8 !important; }
+.secondaryButton:hover:not(:disabled) { background: #292536 !important; }
 .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .actions { display: flex; gap: 12px; margin-top: 24px; }
-.dangerButton { background: transparent; border: 1px solid #96384d; color: #f9a8b5; }
-.dangerButton:hover:not(:disabled) { background: #4b1e2a; }
+.dangerButton { background: transparent !important; border: 1px solid #96384d !important; color: #f9a8b5 !important; }
+.dangerButton:hover:not(:disabled) { background: #4b1e2a !important; }
 @media (max-width: 720px) { .page { padding: 48px 18px; } .authGrid, .fields { grid-template-columns: 1fr; } .userSummary, .actions { align-items: stretch; flex-direction: column; } }

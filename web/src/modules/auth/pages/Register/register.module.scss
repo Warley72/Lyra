@@ -1,0 +1,255 @@
+@use "@/app/styles/variables" as *;
+
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    background-color: $background;
+}
+
+.register {
+    width: 100%;
+    max-width: 414px;
+
+    .containerTitle {
+        margin-bottom: 48px;
+
+        text-align: center;
+
+        .title {
+            margin: 0 0 18px;
+
+            color: $text-primary;
+
+            font-size: 6rem;
+            
+        }
+
+        p:not(.title) {
+            margin: 0;
+
+            color: $text-secondary;
+
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+    }
+
+    .containerForm {
+        width: 100%;
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            gap: 25px;
+        }
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+
+        gap: 9px;
+
+        label {
+            color: $text-primary;
+
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+    }
+
+    .inputContainer {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        height: 64px;
+
+        padding: 0 16px;
+
+        border: 1px solid $border;
+        border-radius: 7px;
+
+        background-color: $background;
+
+        transition: border-color 0.2s ease;
+
+        &:focus-within {
+            border-color: $border-focus;
+        }
+
+        svg {
+            flex-shrink: 0;
+
+            width: 20px;
+            height: 20px;
+
+            margin-right: 14px;
+
+            fill: none;
+            stroke: $text-secondary;
+
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+
+            padding: 0;
+
+            border: none;
+            outline: none;
+
+            color: $text-primary;
+            background: transparent;
+
+            font-family: inherit;
+            font-size: 1rem;
+
+            &::placeholder {
+                color: $text-secondary;
+            }
+        }
+    }
+
+    .showPassword {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-shrink: 0;
+
+        width: 30px;
+        height: 30px;
+
+        margin-left: 8px;
+        padding: 0;
+
+        border: none;
+
+        background: transparent;
+
+        cursor: pointer;
+
+        svg {
+            width: 20px;
+            height: 20px;
+
+            margin: 0;
+
+            stroke: $text-secondary;
+
+            transition: stroke 0.2s ease;
+        }
+
+        &:hover {
+            svg {
+                stroke: $text-primary;
+            }
+        }
+    }
+
+    .helper {
+        margin: -10px 0 0;
+
+        color: $text-muted;
+
+        font-size: 0.95rem;
+    }
+
+    .error {
+        margin: -8px 0 0;
+
+        color: #ff6b6b;
+
+        font-size: 1rem;
+    }
+
+    .submit {
+        width: 100%;
+        height: 65px;
+
+        margin-top: 4px;
+
+        border: 1px solid $button-background;
+        border-radius: 7px;
+
+        color: $button-text;
+        background-color: $button-background;
+
+        font-family: inherit;
+        font-size: 1.2rem;
+
+        cursor: pointer;
+
+        transition:
+            color 0.2s ease,
+            background-color 0.2s ease,
+            opacity 0.2s ease;
+
+        &:hover {
+            color: $button-background;
+            background-color: $background;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+
+            cursor: not-allowed;
+        }
+    }
+
+    .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 7px;
+
+        margin: 28px 0 0;
+
+        color: $text-secondary;
+
+        font-size: 1rem;
+
+        a {
+            color: $text-primary;
+
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .register {
+        .containerTitle {
+            margin-bottom: 38px;
+
+            .title {
+                font-size: 5rem;
+            }
+
+            p:not(.title) {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
