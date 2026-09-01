@@ -1,0 +1,274 @@
+@use "@/styles/variables" as *;
+
+.sidebar {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 220px;
+    min-width: 185px;
+    min-height: 100vh;
+
+    border-right: 1px solid $border;
+
+    background-color: $background;
+
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 72px;
+
+    border-bottom: 1px solid $border;
+
+    span {
+        color: $text-primary;
+        font-size: 38px;
+    }
+}
+
+.closeButton {
+    display: none;
+}
+
+.navigation {
+    padding: 12px 10px;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+
+        gap: 4px;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        min-height: 38px;
+
+        padding: 0 13px;
+
+        border-radius: 6px;
+
+        color: $text-primary;
+
+        text-decoration: none;
+
+        font-size: 18px;
+
+        transition:
+            background-color 0.2s ease,
+            opacity 0.2s ease;
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 25px;
+
+            margin-right: 15px;
+
+            font-size: 25px;
+        }
+
+        &:hover {
+            background-color: $surface;
+        }
+
+        &.active {
+            background-color: $surface-hover;
+        }
+    }
+}
+
+.logout {
+    margin-top: auto;
+
+    padding: 15px 10px 22px;
+
+    button {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        min-height: 38px;
+
+        padding: 0 13px;
+
+        border: none;
+        border-radius: 6px;
+
+        color: $text-primary;
+        background: transparent;
+
+        font-family: inherit;
+        font-size: 15px;
+
+        cursor: pointer;
+
+        transition: background-color 0.2s ease;
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 22px;
+
+            margin-right: 10px;
+
+            font-size: 19px;
+        }
+
+        &:hover {
+            background-color: $surface;
+        }
+    }
+}
+
+.menuButton {
+    display: none;
+}
+
+.overlay {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .menuButton {
+        position: fixed;
+        top: 18px;
+        left: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        border: none;
+
+        color: $text-primary;
+        background: transparent;
+
+        font-family: inherit;
+        font-size: 24px;
+
+        cursor: pointer;
+
+        z-index: 90;
+    }
+
+    .overlay {
+        position: fixed;
+        inset: 0;
+
+        display: block;
+
+        visibility: hidden;
+
+        background-color: rgba(0, 0, 0, 0.65);
+
+        opacity: 0;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+
+        z-index: 110;
+    }
+
+    .overlayVisible {
+        visibility: visible;
+
+        opacity: 1;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 250px;
+        min-width: 250px;
+        height: 100vh;
+        min-height: 100vh;
+
+        transform: translateX(-100%);
+
+        border-right: 1px solid $border;
+
+        transition: transform 0.25s ease;
+
+        z-index: 120;
+    }
+
+    .sidebarOpen {
+        transform: translateX(0);
+    }
+
+    .logo {
+        position: relative;
+
+        justify-content: space-between;
+
+        padding: 0 22px 0 28px;
+    }
+
+    .closeButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        border: none;
+
+        color: $text-primary;
+        background: transparent;
+
+        font-family: inherit;
+        font-size: 28px;
+
+        cursor: pointer;
+    }
+
+    .navigation {
+        padding: 16px 12px;
+
+        a {
+            min-height: 44px;
+        }
+    }
+
+    .logout {
+        padding: 15px 12px 24px;
+
+        button {
+            min-height: 44px;
+        }
+    }
+}

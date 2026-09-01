@@ -1,3 +1,5 @@
-import { DashboardPage } from "@/modules/dashboard/pages/DashboardPage";
+import DashboardPage from "@/modules/dashboard/Dashboard";
 
-export default DashboardPage;
+export default function Page() {
+    return <DashboardPage />;
+}

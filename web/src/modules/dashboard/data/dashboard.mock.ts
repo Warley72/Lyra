@@ -1,34 +1,130 @@
 export const dashboardMock = {
-  userName: "Carlos",
-  month: "Maio, 2025",
-  metrics: [
-    { label: "Saldo total", value: "R$ 24.350,00", change: "↑ 8,2%", tone: "purple", icon: "▣" },
-    { label: "Receitas", value: "R$ 500.00", change: "↑ 2,4%", tone: "green", icon: "↗" },
-    { label: "Despesas", value: "R$ 8.100,00", change: "↓ 3,6%", tone: "red", icon: "↘" },
-    { label: "Taxa de poupança", value: "24,8%", change: "↑ 5,7%", tone: "purple", icon: "◔" },
-  ],
-  categories: [
-    { label: "Moradia", value: "35%", color: "#7046ff" },
-    { label: "Alimentação", value: "25%", color: "#3164f4" },
-    { label: "Transporte", value: "15%", color: "#42c878" },
-    { label: "Saúde", value: "10%", color: "#ffb62f" },
-    { label: "Outros", value: "15%", color: "#5d6168" },
-  ],
-  accounts: [
-    { name: "Carteira", amount: "R$ 4.250,00", icon: "▦" },
-    { name: "Conta Corrente", amount: "R$ 12.850,00", icon: "▦" },
-    { name: "Nubank", amount: "R$ 5.600,00", icon: "N" },
-    { name: "Poupança", amount: "R$ 1.650,00", icon: "⌂" },
-  ],
-  transactions: [
-    { name: "Supermercado Extra", category: "Alimentação", amount: "- R$ 156,90", date: "Hoje", icon: "▣", tone: "purple" },
-    { name: "Salário", category: "Receita", amount: "+ R$ 4.500,00", date: "Hoje", icon: "♙", tone: "green" },
-    { name: "Uber", category: "Transporte", amount: "- R$ 28,50", date: "Ontem", icon: "▱", tone: "orange" },
-    { name: "Freelance", category: "Receita", amount: "+ R$ 1.250,00", date: "Ontem", icon: "♙", tone: "green" },
-    { name: "Netflix", category: "Assinatura", amount: "- R$ 55,90", date: "12 Mai", icon: "N", tone: "purple" },
-  ],
-  goals: [
-    { name: "Reserva de emergência", amount: "R$ 8.450,00 / R$ 15.000,00", progress: 56, icon: "♢" },
-    { name: "Viagem", amount: "R$ 2.300,00 / R$ 5.000,00", progress: 36, icon: "♧" },
-  ],
+    user: {
+        name: "Carlos",
+    },
+
+    month: {
+        name: "May",
+        year: 2025,
+    },
+
+    metrics: {
+        balance: {
+            label: "Total balance",
+            value: 12540.0,
+        },
+
+        income: {
+            label: "Income",
+            value: 8750.0,
+            variation: 12.5,
+        },
+
+        expenses: {
+            label: "Expenses",
+            value: 4320.0,
+            variation: -8.3,
+        },
+
+        savings: {
+            label: "Savings",
+            value: 8220.0,
+        },
+    },
+
+    spending: {
+        total: 4320.0,
+
+        categories: [
+            {
+                name: "Housing",
+                value: 1800.0,
+                percentage: 41.7,
+            },
+            {
+                name: "Food",
+                value: 980.0,
+                percentage: 22.7,
+            },
+            {
+                name: "Transport",
+                value: 720.0,
+                percentage: 16.7,
+            },
+            {
+                name: "Health",
+                value: 460.0,
+                percentage: 10.7,
+            },
+            {
+                name: "Others",
+                value: 360.0,
+                percentage: 8.2,
+            },
+        ],
+    },
+
+    transactions: [
+        {
+            id: 1,
+            description: "Salary",
+            category: "Income",
+            amount: 3250.0,
+            date: "May 23",
+            type: "income",
+        },
+        {
+            id: 2,
+            description: "Grocery store",
+            category: "Food",
+            amount: -85.4,
+            date: "May 22",
+            type: "expense",
+        },
+        {
+            id: 3,
+            description: "Rent",
+            category: "Housing",
+            amount: -1200.0,
+            date: "May 20",
+            type: "expense",
+        },
+        {
+            id: 4,
+            description: "Gas station",
+            category: "Transport",
+            amount: -60.0,
+            date: "May 19",
+            type: "expense",
+        },
+        {
+            id: 5,
+            description: "Gym",
+            category: "Health",
+            amount: -45.0,
+            date: "May 18",
+            type: "expense",
+        },
+    ],
+
+    monthlyProgress: {
+        spent: 4320.0,
+        budget: 5500.0,
+        remaining: 1180.0,
+    },
+
+    accounts: [
+        {
+            id: 1,
+            name: "Nubank",
+            type: "Checking",
+            balance: 8240.0,
+        },
+        {
+            id: 2,
+            name: "Savings",
+            type: "Savings",
+            balance: 4300.0,
+        },
+    ],
 };

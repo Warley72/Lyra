@@ -1,0 +1,23 @@
+@use "@/styles/variables" as *;
+
+.card {
+  width: 100%;
+  padding: 21px 20px 20px;
+  border: 1px solid $border;
+  border-radius: 10px;
+  background: $background;
+  color: $text-primary;
+}
+
+.header, .details { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header h2 { margin: 0; font-size: 17px; font-weight: 500; }
+.monthControl { display: flex; align-items: center; gap: 17px; font-size: 15px; }
+.monthControl button { width: 20px; padding: 0; border: 0; color: $text-primary; background: transparent; font: inherit; font-size: 27px; line-height: 1; cursor: pointer; }
+.details { margin: 32px 0 12px; font-size: 15px; }.details span:nth-child(2) { margin-left: auto; }.details span:last-child { min-width: 136px; text-align: right; }
+.progress { height: 9px; overflow: hidden; border-radius: 999px; background: #3c3c3c; }.progress span { display: block; height: 100%; border-radius: inherit; background: #f7f7f7; transition: width .25s ease; }
+
+@media (max-width: 600px) {
+  .card { padding: 18px 14px; }
+  .header h2 { font-size: 15px; }.monthControl { gap: 10px; font-size: 12px; }.monthControl button { font-size: 22px; }
+  .details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; font-size: 12px; }.details span:nth-child(2) { margin-left: 0; text-align: right; }.details span:last-child { min-width: 0; grid-column: 1 / -1; text-align: left; color: $text-secondary; }
+}

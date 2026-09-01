@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Indie_Flower } from "next/font/google";
 
-import "./globals.scss";
+import "./../styles/globals.scss";
 
 const indieFlower = Indie_Flower({
     weight: "400",
