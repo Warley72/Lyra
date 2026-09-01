@@ -1,0 +1,60 @@
+@use "@/styles/variables" as *;
+
+.dashboard {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: $background;
+}
+
+.content {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 100vh;
+}
+
+.widgetsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+
+    padding: 0 30px 30px;
+}
+
+.progressSection {
+    padding: 0 30px 30px;
+}
+
+.sidebar {
+    width: 185px;
+    min-width: 185px;
+    min-height: 100vh;
+
+    border-right: 1px solid $border;
+
+    background-color: $background;
+}
+
+@media (max-width: 800px) {
+    .widgetsGrid {
+        grid-template-columns: 1fr;
+        padding: 0 20px 24px;
+    }
+
+    .progressSection {
+        padding: 0 20px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .widgetsGrid {
+        padding: 0 14px 20px;
+    }
+
+    .progressSection {
+        padding: 0 14px 20px;
+    }
+}
