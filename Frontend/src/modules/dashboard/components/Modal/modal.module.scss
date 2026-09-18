@@ -1,0 +1,244 @@
+@use "@/styles/variables" as *;
+
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    padding: 20px;
+
+    background: rgb(0 0 0 / 70%);
+}
+
+.modal {
+    width: min(100%, 430px);
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    border: 1px solid $border;
+    border-radius: 8px;
+
+    background: $background;
+    color: $text-primary;
+}
+
+.form {
+    padding: 18px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+
+    font-size: 1.25em;
+    font-weight: 400;
+
+    color: $text-primary;
+}
+
+.backButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: $text-primary;
+
+    font-size: 1.25em;
+
+    cursor: pointer;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field > span,
+.field > label {
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    color: $text-primary;
+}
+
+.typeOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.typeOptions button {
+    height: 28px;
+
+    border: 1px solid $border;
+    border-radius: 4px;
+
+    background: $background;
+    color: $text-primary;
+
+    font-size: 0.875rem;
+
+    cursor: pointer;
+}
+
+.typeOptions button:first-child {
+    border-color: #267a45;
+    background: rgb(20 70 40 / 25%);
+    color: #67d68b;
+}
+
+.typeOptions button:last-child {
+    color: #ff624d;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid $border;
+    border-radius: 4px;
+
+    outline: none;
+
+    background: $background;
+    color: $text-primary;
+
+    font-family: inherit;
+    font-size: 0.875rem;
+}
+
+.field input,
+.field select {
+    height: 28px;
+    padding: 0 9px;
+}
+
+.field textarea {
+    height: 46px;
+    padding: 8px 9px;
+
+    resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: $text-secondary;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: $border-focus;
+}
+
+.field input[type="number"] {
+    padding-left: 9px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+
+.field input[type="date"] {
+    color: $text-primary;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 8px;
+
+    margin-top: 0;
+}
+
+.actions button {
+    height: 28px;
+
+    border-radius: 4px;
+
+    font-family: inherit;
+    font-size: 0.875rem;
+
+    cursor: pointer;
+}
+
+.actions button:first-child {
+    border: 1px solid $border;
+
+    background: $background;
+    color: $text-primary;
+}
+
+.actions button:last-child {
+    border: 1px solid $white;
+
+    background: $button-background;
+    color: $button-text;
+}
+
+.backButton:hover {
+    opacity: 0.7;
+}
+
+.typeOptions button:hover {
+    background: $surface-hover;
+}
+
+.actions button:first-child:hover {
+    background: $surface-hover;
+}
+
+.actions button:last-child:hover {
+    opacity: 0.85;
+}
+
+.typeOptions button:active,
+.actions button:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 500px) {
+    .overlay {
+        padding: 12px;
+    }
+
+    .modal {
+        width: 100%;
+    }
+
+    .form {
+        padding: 16px;
+    }
+}
