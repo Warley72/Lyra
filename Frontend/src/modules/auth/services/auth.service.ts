@@ -1,11 +1,24 @@
-import { http, withAuth } from "@/shared/services/http";
+import { http } from "@/lib/http";
+
+import type {
+    LoginResponse,
+    RegisterRequest,
+    RegisterResponse,
+} from "../types/auth.types";
 
 const TOKEN_KEY = "lyra.auth.token";
 
-export function login( email: string, password: string,): Promise<{ token: string }> {
-    return http<{ token: string }>("/auth/login", {
+export function login(email: string, password: string): Promise<LoginResponse> {
+    return http<LoginResponse>("/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
+    });
+}
+
+export function register(data: RegisterRequest): Promise<RegisterResponse> {
+    return http<RegisterResponse>("/users", {
+        method: "POST",
+        body: JSON.stringify(data),
     });
 }
 
@@ -23,4 +36,8 @@ export function clearAuthToken(): void {
 
 export async function validateAuthToken(token: string): Promise<void> {
     await http("/users", { headers: withAuth(token) });
+}
+
+function withAuth(token: string): HeadersInit {
+    return { Authorization: `Bearer ${token}` };
 }
