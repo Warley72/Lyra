@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createUser } from "@/modules/users";
+import { register } from "@/modules/auth";
 
 import styles from "./register.module.scss";
 
@@ -82,7 +82,7 @@ export default function Register() {
         setIsLoading(true);
 
         try {
-            await createUser({
+            await register({
                 name,
                 email,
                 password,
